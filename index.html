@@ -199,7 +199,115 @@ canvas{border-radius:10px}
 .mt{margin-top:10px}
 .mb{margin-bottom:10px}
 .text-center{text-align:center}
-</style>
+
+/* ══════════════════════════════════════════════════════════
+   PREMIUM FEATURES CSS
+══════════════════════════════════════════════════════════ */
+
+/* ── EXERCISE ANIMATION PANEL ── */
+#ex-anim-wrap{background:var(--bg2);border-radius:14px;border:1px solid var(--gold-border);overflow:hidden;margin-bottom:14px;position:relative}
+#ex-anim-stage{width:100%;height:200px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(180deg,#0a0a0a 0%,#111 60%,#0d0d0d 100%)}
+.anim-floor{position:absolute;bottom:20px;left:10%;right:10%;height:3px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent);border-radius:99px}
+.anim-glow{position:absolute;bottom:22px;left:20%;right:20%;height:20px;background:radial-gradient(ellipse,rgba(201,168,76,0.15) 0%,transparent 70%)}
+
+/* Stickman Character */
+.stickman{position:relative;width:80px;height:160px;display:flex;flex-direction:column;align-items:center}
+.stick-head{width:28px;height:28px;border-radius:50%;border:3px solid var(--gold);background:transparent;position:absolute;top:0;left:50%;transform:translateX(-50%)}
+.stick-body{width:3px;height:50px;background:var(--gold);position:absolute;top:26px;left:50%;transform:translateX(-50%)}
+.stick-arm-l,.stick-arm-r{position:absolute;width:3px;height:38px;background:var(--gold);top:36px;transform-origin:top center}
+.stick-arm-l{left:calc(50% - 1.5px);transform:rotate(-45deg)}
+.stick-arm-r{left:calc(50% - 1.5px);transform:rotate(45deg)}
+.stick-leg-l,.stick-leg-r{position:absolute;width:3px;height:44px;background:var(--gold);top:75px;transform-origin:top center}
+.stick-leg-l{left:calc(50% - 1.5px);transform:rotate(-20deg)}
+.stick-leg-r{left:calc(50% - 1.5px);transform:rotate(20deg)}
+
+/* Equipment SVGs */
+.barbell-eq{position:absolute;display:flex;align-items:center;gap:0}
+.barbell-bar{width:120px;height:4px;background:linear-gradient(90deg,#555,#888,#555);border-radius:2px}
+.barbell-plate{width:10px;height:30px;background:linear-gradient(180deg,var(--gold),var(--gold-dim));border-radius:3px}
+.dumbbell-eq{width:60px;height:14px;display:flex;align-items:center;gap:2px}
+.db-plate{width:12px;height:14px;background:linear-gradient(180deg,var(--gold),var(--gold-dim));border-radius:2px}
+.db-handle{flex:1;height:6px;background:#777;border-radius:2px}
+
+/* Exercise Animations */
+@keyframes bench-press{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes squat{0%,100%{transform:scaleY(1) translateY(0)}50%{transform:scaleY(0.75) translateY(20px)}}
+@keyframes curl{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-40deg)}}
+@keyframes shoulder-press{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes deadlift{0%,100%{transform:rotate(0deg) translateY(0)}40%{transform:rotate(30deg) translateY(15px)}60%{transform:rotate(30deg) translateY(15px)}}
+@keyframes pullup{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}
+@keyframes pushup{0%,100%{transform:rotate(0deg) translateY(0)}50%{transform:rotate(5deg) translateY(10px)}}
+@keyframes lunge{0%,100%{transform:scaleY(1)}50%{transform:scaleY(0.85) translateY(15px)}}
+@keyframes run{0%,100%{transform:skewX(0deg)}50%{transform:skewX(-8deg)}}
+@keyframes arm-swing{0%,100%{transform:rotate(-45deg)}50%{transform:rotate(-90deg)}}
+@keyframes arm-swing2{0%,100%{transform:rotate(45deg)}50%{transform:rotate(90deg)}}
+@keyframes leg-pump{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(-50deg)}}
+@keyframes leg-pump2{0%,100%{transform:rotate(20deg)}50%{transform:rotate(50deg)}}
+@keyframes body-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes glow-pulse{0%,100%{opacity:0.15}50%{opacity:0.4}}
+
+.anim-glow{animation:glow-pulse 1.5s infinite ease-in-out}
+#ex-anim-label{text-align:center;padding:8px 16px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;background:var(--bg3);border-top:1px solid var(--w05)}
+
+/* ── MUSCLE HEATMAP ── */
+#muscle-heatmap-wrap{background:var(--bg2);border-radius:14px;border:1px solid var(--w05);padding:14px;margin-bottom:14px}
+.heatmap-title{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.heatmap-body{display:flex;gap:16px;justify-content:center}
+.heatmap-side{text-align:center}
+.heatmap-side-label{font-size:10px;color:var(--text3);margin-bottom:6px;font-weight:600;letter-spacing:1px}
+.muscle-svg{width:90px;height:180px}
+.muscle-group{fill:var(--bg4);stroke:var(--bg5);stroke-width:1;transition:fill 0.5s ease,filter 0.5s ease;cursor:pointer}
+.muscle-group.active-low{fill:rgba(201,168,76,0.3)}
+.muscle-group.active-mid{fill:rgba(201,168,76,0.6)}
+.muscle-group.active-high{fill:#C9A84C;filter:drop-shadow(0 0 6px rgba(201,168,76,0.6))}
+.muscle-legend{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:10px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3)}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+
+/* ── ACHIEVEMENT BADGES ── */
+#achievements-wrap{margin-bottom:14px}
+.achievement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ach-card{background:var(--bg2);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--w05);position:relative;transition:all 0.3s}
+.ach-card.unlocked{border-color:var(--gold-border);background:linear-gradient(135deg,rgba(201,168,76,0.08),var(--bg2))}
+.ach-card.locked{opacity:0.4;filter:grayscale(0.5)}
+.ach-icon{font-size:26px;margin-bottom:6px;line-height:1}
+.ach-name{font-size:10px;font-weight:700;color:var(--text2);line-height:1.3}
+.ach-desc{font-size:9px;color:var(--text3);margin-top:3px;line-height:1.3}
+.ach-badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px}
+
+/* Achievement unlock animation */
+@keyframes ach-unlock{0%{transform:scale(0.5);opacity:0}60%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.ach-card.just-unlocked{animation:ach-unlock 0.5s ease forwards}
+
+/* ── PREMIUM PR CELEBRATION ── */
+@keyframes pr-burst{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
+.pr-toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#E8C96A,#C9A84C);color:#080808;padding:12px 24px;border-radius:12px;font-weight:900;font-size:14px;z-index:999;display:none;animation:slideDown 0.3s ease;box-shadow:0 8px 32px rgba(201,168,76,0.5)}
+@keyframes slideDown{from{transform:translateX(-50%) translateY(-20px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}
+
+/* ── REST TIMER UPGRADE ── */
+.rest-circle{width:160px;height:160px;position:relative;margin:0 auto 20px}
+.rest-circle svg{transform:rotate(-90deg)}
+.rest-circle-track{fill:none;stroke:var(--bg4);stroke-width:10}
+.rest-circle-fill{fill:none;stroke:var(--gold);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1s linear;stroke-dasharray:440;stroke-dashoffset:0}
+#rest-num-v2{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#rest-sec-big{font-size:52px;font-weight:900;color:var(--text);line-height:1}
+#rest-label-small{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px}
+
+/* ── WORKOUT SCREEN UPGRADE ── */
+.ex-anim-inline{width:100%;height:140px;border-radius:10px;background:linear-gradient(180deg,#0a0a0a,#111);display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative;overflow:hidden;border:1px solid var(--gold-border)}
+
+/* ── VERSION BADGE ── */
+.version-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid var(--gold-border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px}
+
+/* ── LEVEL SYSTEM ── */
+.level-bar-wrap{margin-top:10px}
+.level-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.level-name{font-size:13px;font-weight:800;color:var(--gold)}
+.level-xp{font-size:11px;color:var(--text3)}
+.level-icons{display:flex;gap:4px;margin-top:8px}
+.level-icon{font-size:18px;filter:grayscale(1);opacity:0.3;transition:all 0.3s}
+.level-icon.active{filter:grayscale(0);opacity:1}
+
 </head>
 <body>
 <div id="app">
@@ -273,6 +381,10 @@ canvas{border-radius:10px}
           <div class="pbar pbar-sm"><div class="pbar-fill" id="water-bar" style="background:var(--blue);width:0%"></div></div>
         </div>
       </div>
+
+      <!-- Achievements -->
+      <div class="sh"><h3>🏆 Achievements</h3><a onclick="goTo('screen-profile');setTimeout(()=>prTab('achievements'),200)">See All</a></div>
+      <div id="home-achievements" class="achievement-grid" style="margin-bottom:14px"></div>
 
       <!-- AI Recommendation -->
       <div class="sh"><h3>🤖 AI Recommendation</h3></div>
@@ -444,14 +556,17 @@ canvas{border-radius:10px}
       <button class="tab-btn active" onclick="prTab('profile')">Profile</button>
       <button class="tab-btn" onclick="prTab('trainer')">Trainer</button>
       <button class="tab-btn" onclick="prTab('attend')">Attendance</button>
+      <button class="tab-btn" onclick="prTab('achievements')">🏆</button>
       <button class="tab-btn" onclick="prTab('settings')">Settings</button>
     </div>
 
+    <!-- Level system on profile -->
     <div class="scroll" id="prtab-profile">
       <div style="text-align:center;padding:20px 0">
         <div class="avatar" id="pr-avatar">IF</div>
         <div style="font-size:22px;font-weight:900" id="pr-name">Iron Athlete</div>
         <div style="margin-top:8px" id="pr-goal-badge"></div>
+        <div id="level-display" style="margin-top:12px"></div>
         <button class="btn btn-outline btn-sm" style="margin:14px auto 0;display:block" onclick="openModal('modal-profile')">Edit Profile</button>
       </div>
       <div class="stat-row">
@@ -489,6 +604,14 @@ canvas{border-radius:10px}
       </div>
       <div class="sh"><h3>Recent Visits</h3></div>
       <div id="attend-list"></div>
+    </div>
+
+    <div class="scroll" id="prtab-achievements" style="display:none">
+      <div class="card gradient" style="margin-bottom:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px">🏆 YOUR ACHIEVEMENTS</div>
+        <div style="font-size:13px;color:var(--text2)" id="ach-summary">Keep training to unlock badges!</div>
+      </div>
+      <div id="all-achievements-grid" class="achievement-grid"></div>
     </div>
 
     <div class="scroll" id="prtab-settings" style="display:none">
@@ -565,7 +688,99 @@ canvas{border-radius:10px}
     <!-- Current exercise -->
     <div class="card gold" id="aw-current-ex">
       <div style="font-size:20px;font-weight:900;margin-bottom:4px" id="aw-ex-name">Exercise</div>
-      <div style="font-size:12px;color:var(--text3);margin-bottom:14px" id="aw-ex-meta">Category · Equipment</div>
+      <div style="font-size:12px;color:var(--text3);margin-bottom:10px" id="aw-ex-meta">Category · Equipment</div>
+
+      <!-- EXERCISE ANIMATION -->
+      <div id="ex-anim-wrap">
+        <div id="ex-anim-stage">
+          <div class="anim-glow"></div>
+          <div class="anim-floor"></div>
+          <div id="ex-animator"></div>
+        </div>
+        <div id="ex-anim-label">Loading animation...</div>
+      </div>
+
+      <!-- MUSCLE HEATMAP -->
+      <div id="muscle-heatmap-wrap">
+        <div class="heatmap-title">🔥 Muscles Targeted</div>
+        <div class="heatmap-body">
+          <div class="heatmap-side">
+            <div class="heatmap-side-label">FRONT</div>
+            <svg class="muscle-svg" viewBox="0 0 90 180" id="heatmap-front">
+              <!-- Chest -->
+              <ellipse class="muscle-group" id="m-chest-l" cx="32" cy="58" rx="14" ry="12"/>
+              <ellipse class="muscle-group" id="m-chest-r" cx="58" cy="58" rx="14" ry="12"/>
+              <!-- Shoulders front -->
+              <ellipse class="muscle-group" id="m-front-delt-l" cx="16" cy="48" rx="9" ry="8"/>
+              <ellipse class="muscle-group" id="m-front-delt-r" cx="74" cy="48" rx="9" ry="8"/>
+              <!-- Biceps -->
+              <rect class="muscle-group" id="m-bicep-l" x="8" y="62" width="12" height="28" rx="6"/>
+              <rect class="muscle-group" id="m-bicep-r" x="70" y="62" width="12" height="28" rx="6"/>
+              <!-- Core/Abs -->
+              <rect class="muscle-group" id="m-abs-1" x="36" y="72" width="18" height="10" rx="3"/>
+              <rect class="muscle-group" id="m-abs-2" x="36" y="85" width="18" height="10" rx="3"/>
+              <rect class="muscle-group" id="m-abs-3" x="36" y="98" width="18" height="10" rx="3"/>
+              <!-- Obliques -->
+              <ellipse class="muscle-group" id="m-oblique-l" cx="28" cy="92" rx="8" ry="14"/>
+              <ellipse class="muscle-group" id="m-oblique-r" cx="62" cy="92" rx="8" ry="14"/>
+              <!-- Quads -->
+              <rect class="muscle-group" id="m-quad-l" x="24" y="118" width="16" height="40" rx="8"/>
+              <rect class="muscle-group" id="m-quad-r" x="50" y="118" width="16" height="40" rx="8"/>
+              <!-- Calves front -->
+              <rect class="muscle-group" id="m-calf-front-l" x="25" y="162" width="13" height="14" rx="6"/>
+              <rect class="muscle-group" id="m-calf-front-r" x="52" y="162" width="13" height="14" rx="6"/>
+              <!-- Body outline -->
+              <ellipse cx="45" cy="22" rx="16" ry="18" fill="var(--bg3)" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="28" y="38" width="34" height="70" rx="10" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="16" y="40" width="14" height="58" rx="7" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="60" y="40" width="14" height="58" rx="7" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="25" y="110" width="18" height="60" rx="9" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="47" y="110" width="18" height="60" rx="9" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="heatmap-side">
+            <div class="heatmap-side-label">BACK</div>
+            <svg class="muscle-svg" viewBox="0 0 90 180" id="heatmap-back">
+              <!-- Traps -->
+              <ellipse class="muscle-group" id="m-trap" cx="45" cy="46" rx="20" ry="12"/>
+              <!-- Rear delts -->
+              <ellipse class="muscle-group" id="m-rear-delt-l" cx="16" cy="48" rx="9" ry="8"/>
+              <ellipse class="muscle-group" id="m-rear-delt-r" cx="74" cy="48" rx="9" ry="8"/>
+              <!-- Lats -->
+              <ellipse class="muscle-group" id="m-lat-l" cx="24" cy="75" rx="10" ry="22"/>
+              <ellipse class="muscle-group" id="m-lat-r" cx="66" cy="75" rx="10" ry="22"/>
+              <!-- Mid back / Rhomboids -->
+              <rect class="muscle-group" id="m-midback" x="33" y="58" width="24" height="26" rx="5"/>
+              <!-- Lower back -->
+              <rect class="muscle-group" id="m-lower-back" x="32" y="88" width="26" height="22" rx="5"/>
+              <!-- Triceps -->
+              <rect class="muscle-group" id="m-tricep-l" x="8" y="60" width="12" height="28" rx="6"/>
+              <rect class="muscle-group" id="m-tricep-r" x="70" y="60" width="12" height="28" rx="6"/>
+              <!-- Glutes -->
+              <ellipse class="muscle-group" id="m-glute-l" cx="34" cy="120" rx="14" ry="13"/>
+              <ellipse class="muscle-group" id="m-glute-r" cx="56" cy="120" rx="14" ry="13"/>
+              <!-- Hamstrings -->
+              <rect class="muscle-group" id="m-ham-l" x="24" y="135" width="16" height="34" rx="8"/>
+              <rect class="muscle-group" id="m-ham-r" x="50" y="135" width="16" height="34" rx="8"/>
+              <!-- Calves -->
+              <rect class="muscle-group" id="m-calf-l" x="25" y="172" width="13" height="6" rx="4"/>
+              <rect class="muscle-group" id="m-calf-r" x="52" y="172" width="13" height="6" rx="4"/>
+              <!-- Body outline -->
+              <ellipse cx="45" cy="22" rx="16" ry="18" fill="var(--bg3)" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="28" y="38" width="34" height="70" rx="10" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="16" y="40" width="14" height="58" rx="7" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="60" y="40" width="14" height="58" rx="7" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="25" y="110" width="18" height="70" rx="9" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+              <rect x="47" y="110" width="18" height="70" rx="9" fill="none" stroke="var(--bg5)" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="muscle-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(201,168,76,0.3)"></div>Light</div>
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(201,168,76,0.6)"></div>Medium</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#C9A84C"></div>Primary</div>
+        </div>
+      </div>
 
       <!-- Set indicators -->
       <div id="aw-set-dots" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"></div>
@@ -605,15 +820,24 @@ canvas{border-radius:10px}
   </div>
 </div>
 
-<!-- REST TIMER -->
+<!-- REST TIMER - PREMIUM -->
 <div id="rest-overlay">
   <div class="rest-label">REST TIME</div>
-  <div class="rest-num" id="rest-num">90</div>
-  <div style="width:200px;height:6px;background:var(--bg4);border-radius:99px;overflow:hidden;margin:20px 0">
-    <div id="rest-bar-fill" style="height:100%;background:var(--gold);border-radius:99px;transition:width 1s linear;width:100%"></div>
+  <div class="rest-circle">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="rest-circle-track" cx="80" cy="80" r="70"/>
+      <circle class="rest-circle-fill" id="rest-circle-arc" cx="80" cy="80" r="70"/>
+    </svg>
+    <div id="rest-num-v2">
+      <div id="rest-sec-big">90</div>
+      <div id="rest-label-small">SECONDS</div>
+    </div>
   </div>
-  <button onclick="skipRest()" style="padding:12px 32px;border-radius:10px;border:1.5px solid var(--gold-border);background:none;color:var(--gold);font-size:14px;font-weight:700;cursor:pointer">Skip Rest</button>
+  <button onclick="skipRest()" style="padding:12px 32px;border-radius:10px;border:1.5px solid var(--gold-border);background:none;color:var(--gold);font-size:14px;font-weight:700;cursor:pointer">Skip Rest ›</button>
 </div>
+
+<!-- PR TOAST -->
+<div class="pr-toast" id="pr-toast">🏆 NEW PERSONAL RECORD!</div>
 
 <!-- ════════════════════════════════════
      MODALS
@@ -1479,16 +1703,386 @@ function clearAllData(){
 }
 
 // ══════════════════════════════════════════════════════════
-// INIT
+// PREMIUM FEATURES JS
 // ══════════════════════════════════════════════════════════
-loadState();
-refreshHome();
-filterFoods();
-renderExLibrary();
-renderPrograms();
-document.getElementById('p-goal').addEventListener('change',()=>{});
-// Fix Edit Profile button
-document.querySelector('#screen-profile .topbar-right').onclick=openProfileModal;
+
+// ── EXERCISE ANIMATION ENGINE ──
+const ANIM_MAP = {
+  // Chest
+  'e001': {label:'Bench Press',anim:'bench',eq:'barbell'},
+  'e002': {label:'Incline Press',anim:'bench',eq:'dumbbell'},
+  'e003': {label:'Cable Fly',anim:'fly',eq:'cable'},
+  'e004': {label:'Push-Up',anim:'pushup',eq:'body'},
+  'e005': {label:'Chest Dips',anim:'dip',eq:'body'},
+  // Back
+  'e006': {label:'Deadlift',anim:'deadlift',eq:'barbell'},
+  'e007': {label:'Pull-Up',anim:'pullup',eq:'body'},
+  'e008': {label:'Barbell Row',anim:'row',eq:'barbell'},
+  'e009': {label:'Lat Pulldown',anim:'pulldown',eq:'cable'},
+  'e010': {label:'Cable Row',anim:'row',eq:'cable'},
+  'e011': {label:'Face Pull',anim:'facepull',eq:'cable'},
+  // Shoulders
+  'e012': {label:'Overhead Press',anim:'press',eq:'barbell'},
+  'e013': {label:'Lateral Raise',anim:'raise',eq:'dumbbell'},
+  'e014': {label:'Arnold Press',anim:'press',eq:'dumbbell'},
+  'e015': {label:'Rear Delt Fly',anim:'fly',eq:'dumbbell'},
+  // Arms
+  'e016': {label:'Barbell Curl',anim:'curl',eq:'barbell'},
+  'e017': {label:'Hammer Curl',anim:'curl',eq:'dumbbell'},
+  'e018': {label:'Tricep Dip',anim:'dip',eq:'body'},
+  'e019': {label:'Close-Grip Bench',anim:'bench',eq:'barbell'},
+  'e020': {label:'Skull Crusher',anim:'skulls',eq:'barbell'},
+  // Legs
+  'e021': {label:'Back Squat',anim:'squat',eq:'barbell'},
+  'e022': {label:'Romanian DL',anim:'rdl',eq:'barbell'},
+  'e023': {label:'Leg Press',anim:'legpress',eq:'machine'},
+  'e024': {label:'Split Squat',anim:'lunge',eq:'dumbbell'},
+  'e025': {label:'Hip Thrust',anim:'hipthrust',eq:'barbell'},
+  'e026': {label:'Calf Raise',anim:'calfraise',eq:'machine'},
+  // Core
+  'e027': {label:'Plank',anim:'plank',eq:'body'},
+  'e028': {label:'Leg Raise',anim:'legraise',eq:'body'},
+  'e029': {label:'Cable Crunch',anim:'crunch',eq:'cable'},
+  'e030': {label:'Russian Twist',anim:'twist',eq:'body'},
+  // Cardio/Full
+  'e031': {label:'Burpee',anim:'run',eq:'body'},
+  'e032': {label:'Box Jump',anim:'jump',eq:'body'},
+  'e033': {label:'KB Swing',anim:'swing',eq:'kettlebell'},
+  'e034': {label:'Clean & Press',anim:'press',eq:'barbell'},
+  'e035': {label:'Goblet Squat',anim:'squat',eq:'kettlebell'},
+  'e036': {label:'DB Row',anim:'row',eq:'dumbbell'},
+  'e037': {label:'Leg Curl',anim:'curl',eq:'machine'},
+  'e038': {label:'Leg Extension',anim:'raise',eq:'machine'},
+  'e039': {label:'Lunges',anim:'lunge',eq:'dumbbell'},
+  'e040': {label:'Ab Wheel',anim:'rollout',eq:'body'},
+  'e041': {label:'Preacher Curl',anim:'curl',eq:'machine'},
+  'e042': {label:'Cable Pushdown',anim:'pushdown',eq:'cable'},
+  'e043': {label:'Upright Row',anim:'row',eq:'barbell'},
+  'e044': {label:'Jump Rope',anim:'run',eq:'body'},
+  'e045': {label:'Battle Ropes',anim:'swing',eq:'body'},
+};
+
+function getStickman(animClass, eqHtml='') {
+  return `
+    <div class="stickman" id="anim-stickman" style="position:relative">
+      <div class="stick-head"></div>
+      <div class="stick-body"></div>
+      <div class="stick-arm-l" id="arm-l"></div>
+      <div class="stick-arm-r" id="arm-r"></div>
+      <div class="stick-leg-l" id="leg-l"></div>
+      <div class="stick-leg-r" id="leg-r"></div>
+    </div>
+    ${eqHtml}
+  `;
+}
+
+function getEqHtml(eq) {
+  if(eq==='barbell') return `<div class="barbell-eq" style="position:absolute;bottom:40px"><div class="barbell-plate"></div><div class="barbell-bar"></div><div class="barbell-plate"></div></div>`;
+  if(eq==='dumbbell') return `<div style="position:absolute;bottom:50px;display:flex;gap:30px"><div class="dumbbell-eq"><div class="db-plate"></div><div class="db-handle"></div><div class="db-plate"></div></div><div class="dumbbell-eq"><div class="db-plate"></div><div class="db-handle"></div><div class="db-plate"></div></div></div>`;
+  if(eq==='kettlebell') return `<div style="position:absolute;bottom:42px;font-size:22px">🏋️</div>`;
+  if(eq==='cable') return `<div style="position:absolute;right:10px;top:20px;width:3px;height:120px;background:linear-gradient(180deg,var(--gold-dim),transparent);border-radius:99px"></div>`;
+  return '';
+}
+
+function applyAnimation(animType) {
+  const armL = document.getElementById('arm-l');
+  const armR = document.getElementById('arm-r');
+  const legL = document.getElementById('leg-l');
+  const legR = document.getElementById('leg-r');
+  const body = document.getElementById('anim-stickman');
+  if (!armL || !armR) return;
+
+  const dur = '1.2s';
+  const slow = '1.8s';
+
+  const presets = {
+    bench:      {al:'rotate(-120deg)',ar:'rotate(120deg)',ll:'rotate(-20deg)',lr:'rotate(20deg)',body:'translateY(0)',
+                  alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+    squat:      {body:'scaleY(1)',bodyA:`squat ${slow} ease-in-out infinite`},
+    curl:       {al:'rotate(-45deg)',ar:'rotate(45deg)',alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+    press:      {al:'rotate(-160deg)',ar:'rotate(160deg)',alA:`arm-swing ${dur} ease-in-out infinite alternate`,bodyA:`body-bounce ${dur} ease-in-out infinite`},
+    deadlift:   {al:'rotate(-30deg)',ar:'rotate(30deg)',bodyA:`deadlift ${slow} ease-in-out infinite`},
+    pullup:     {al:'rotate(-150deg)',ar:'rotate(150deg)',bodyA:`pullup ${dur} ease-in-out infinite`},
+    row:        {al:'rotate(-60deg)',ar:'rotate(60deg)',alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+    lunge:      {ll:'rotate(-40deg)',lr:'rotate(40deg)',bodyA:`lunge ${slow} ease-in-out infinite`},
+    run:        {alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`,
+                  llA:`leg-pump ${dur} ease-in-out infinite alternate`,lrA:`leg-pump2 ${dur} ease-in-out infinite alternate`},
+    rdl:        {al:'rotate(-30deg)',ar:'rotate(30deg)',bodyA:`deadlift ${slow} ease-in-out infinite`},
+    hipthrust:  {ll:'rotate(-60deg)',lr:'rotate(60deg)',bodyA:`squat ${slow} ease-in-out infinite`},
+    calfraise:  {bodyA:`body-bounce 0.8s ease-in-out infinite`},
+    plank:      {al:'rotate(-10deg)',ar:'rotate(10deg)',ll:'rotate(-10deg)',lr:'rotate(10deg)'},
+    legraise:   {llA:`leg-pump ${dur} ease-in-out infinite alternate`,lrA:`leg-pump2 ${dur} ease-in-out infinite alternate`},
+    crunch:     {bodyA:`squat ${slow} ease-in-out infinite`},
+    twist:      {alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+    raise:      {alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+    fly:        {alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+    dip:        {al:'rotate(-130deg)',ar:'rotate(130deg)',bodyA:`body-bounce ${dur} ease-in-out infinite`},
+    pulldown:   {al:'rotate(-130deg)',ar:'rotate(130deg)',bodyA:`body-bounce ${dur} ease-in-out infinite`},
+    facepull:   {al:'rotate(-100deg)',ar:'rotate(100deg)',alA:`arm-swing 1s ease-in-out infinite alternate`,arA:`arm-swing2 1s ease-in-out infinite alternate`},
+    skulls:     {al:'rotate(-100deg)',ar:'rotate(100deg)',alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+    swing:      {al:'rotate(-30deg)',ar:'rotate(30deg)',bodyA:`deadlift ${slow} ease-in-out infinite`},
+    jump:       {bodyA:`pullup ${dur} ease-in-out infinite`},
+    rollout:    {al:'rotate(-10deg)',ar:'rotate(10deg)',bodyA:`deadlift ${slow} ease-in-out infinite`},
+    legpress:   {ll:'rotate(-60deg)',lr:'rotate(60deg)',llA:`leg-pump ${dur} ease-in-out infinite alternate`,lrA:`leg-pump2 ${dur} ease-in-out infinite alternate`},
+    pushdown:   {al:'rotate(-30deg)',ar:'rotate(30deg)',alA:`arm-swing ${dur} ease-in-out infinite alternate`,arA:`arm-swing2 ${dur} ease-in-out infinite alternate`},
+  };
+
+  const p = presets[animType] || presets.run;
+  if(p.al) armL.style.transform = p.al;
+  if(p.ar) armR.style.transform = p.ar;
+  if(p.ll) legL.style.transform = p.ll;
+  if(p.lr) legR.style.transform = p.lr;
+  if(p.alA) armL.style.animation = p.alA;
+  if(p.arA) armR.style.animation = p.arA;
+  if(p.llA) legL.style.animation = p.llA;
+  if(p.lrA) legR.style.animation = p.lrA;
+  if(p.bodyA && body) body.style.animation = p.bodyA;
+}
+
+function showExerciseAnimation(exId) {
+  const map = ANIM_MAP[exId] || {label:'Exercise',anim:'run',eq:'body'};
+  const stage = document.getElementById('ex-animator');
+  const label = document.getElementById('ex-anim-label');
+  if(!stage || !label) return;
+  stage.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'position:relative;display:flex;align-items:flex-end;justify-content:center;height:160px;width:100%';
+  wrap.innerHTML = getStickman(map.anim) + getEqHtml(map.eq);
+  stage.appendChild(wrap);
+  label.textContent = map.label + ' — ANIMATING';
+  setTimeout(() => applyAnimation(map.anim), 50);
+}
+
+// ── MUSCLE HEATMAP ENGINE ──
+const MUSCLE_MAP = {
+  'e001': {front:['m-chest-l:high','m-chest-r:high','m-front-delt-l:mid','m-front-delt-r:mid','m-tricep-l:low','m-tricep-r:low'],back:['m-tricep-l:mid','m-tricep-r:mid']},
+  'e002': {front:['m-chest-l:high','m-chest-r:high','m-front-delt-l:high','m-front-delt-r:high'],back:['m-tricep-l:mid','m-tricep-r:mid']},
+  'e003': {front:['m-chest-l:high','m-chest-r:high'],back:[]},
+  'e004': {front:['m-chest-l:high','m-chest-r:high','m-front-delt-l:mid','m-front-delt-r:mid','m-abs-1:low','m-abs-2:low'],back:['m-tricep-l:mid','m-tricep-r:mid']},
+  'e005': {front:['m-chest-l:mid','m-chest-r:mid'],back:['m-tricep-l:high','m-tricep-r:high']},
+  'e006': {front:['m-quad-l:mid','m-quad-r:mid'],back:['m-lower-back:high','m-glute-l:high','m-glute-r:high','m-ham-l:high','m-ham-r:high','m-trap:low']},
+  'e007': {front:['m-bicep-l:mid','m-bicep-r:mid'],back:['m-lat-l:high','m-lat-r:high','m-rear-delt-l:mid','m-rear-delt-r:mid']},
+  'e008': {front:['m-bicep-l:mid','m-bicep-r:mid'],back:['m-lat-l:high','m-lat-r:high','m-midback:high']},
+  'e009': {front:['m-bicep-l:low','m-bicep-r:low'],back:['m-lat-l:high','m-lat-r:high']},
+  'e010': {front:[],back:['m-midback:high','m-lat-l:mid','m-lat-r:mid']},
+  'e011': {back:['m-rear-delt-l:high','m-rear-delt-r:high','m-midback:mid']},
+  'e012': {front:['m-front-delt-l:high','m-front-delt-r:high'],back:['m-trap:mid','m-tricep-l:mid','m-tricep-r:mid']},
+  'e013': {front:['m-front-delt-l:low','m-front-delt-r:low'],back:['m-rear-delt-l:high','m-rear-delt-r:high']},
+  'e014': {front:['m-front-delt-l:high','m-front-delt-r:high'],back:['m-rear-delt-l:mid','m-rear-delt-r:mid','m-tricep-l:low','m-tricep-r:low']},
+  'e015': {back:['m-rear-delt-l:high','m-rear-delt-r:high']},
+  'e016': {front:['m-bicep-l:high','m-bicep-r:high'],back:[]},
+  'e017': {front:['m-bicep-l:high','m-bicep-r:high'],back:[]},
+  'e018': {back:['m-tricep-l:high','m-tricep-r:high'],front:['m-front-delt-l:low','m-front-delt-r:low']},
+  'e019': {back:['m-tricep-l:high','m-tricep-r:high'],front:['m-chest-l:mid','m-chest-r:mid']},
+  'e020': {back:['m-tricep-l:high','m-tricep-r:high'],front:[]},
+  'e021': {front:['m-quad-l:high','m-quad-r:high'],back:['m-glute-l:high','m-glute-r:high','m-ham-l:mid','m-ham-r:mid','m-lower-back:low']},
+  'e022': {back:['m-ham-l:high','m-ham-r:high','m-glute-l:mid','m-glute-r:mid','m-lower-back:mid'],front:[]},
+  'e023': {front:['m-quad-l:high','m-quad-r:high'],back:['m-glute-l:mid','m-glute-r:mid']},
+  'e024': {front:['m-quad-l:high','m-quad-r:high'],back:['m-glute-l:high','m-glute-r:high']},
+  'e025': {back:['m-glute-l:high','m-glute-r:high','m-ham-l:mid','m-ham-r:mid'],front:[]},
+  'e026': {front:['m-calf-front-l:high','m-calf-front-r:high'],back:['m-calf-l:high','m-calf-r:high']},
+  'e027': {front:['m-abs-1:mid','m-abs-2:mid','m-abs-3:mid','m-oblique-l:low','m-oblique-r:low'],back:['m-lower-back:mid']},
+  'e028': {front:['m-abs-3:high','m-abs-2:mid','m-oblique-l:low'],back:[]},
+  'e029': {front:['m-abs-1:high','m-abs-2:high','m-abs-3:mid'],back:[]},
+  'e030': {front:['m-oblique-l:high','m-oblique-r:high','m-abs-1:mid'],back:[]},
+  'e031': {front:['m-chest-l:mid','m-chest-r:mid','m-quad-l:mid','m-quad-r:mid'],back:['m-glute-l:mid','m-glute-r:mid']},
+  'e032': {front:['m-quad-l:high','m-quad-r:high'],back:['m-glute-l:high','m-glute-r:high','m-calf-l:mid','m-calf-r:mid']},
+  'e033': {back:['m-glute-l:high','m-glute-r:high','m-ham-l:high','m-ham-r:high'],front:['m-abs-1:mid']},
+  'e034': {front:['m-quad-l:mid','m-quad-r:mid','m-front-delt-l:high','m-front-delt-r:high'],back:['m-trap:high']},
+  'e035': {front:['m-quad-l:high','m-quad-r:high'],back:['m-glute-l:mid','m-glute-r:mid']},
+  'e036': {front:['m-bicep-l:low','m-bicep-r:low'],back:['m-lat-l:high','m-lat-r:high']},
+  'e037': {back:['m-ham-l:high','m-ham-r:high'],front:[]},
+  'e038': {front:['m-quad-l:high','m-quad-r:high'],back:[]},
+  'e039': {front:['m-quad-l:high','m-quad-r:high'],back:['m-glute-l:mid','m-glute-r:mid','m-ham-l:low','m-ham-r:low']},
+  'e040': {front:['m-abs-1:high','m-abs-2:high'],back:['m-lat-l:mid','m-lat-r:mid']},
+  'e041': {front:['m-bicep-l:high','m-bicep-r:high'],back:[]},
+  'e042': {back:['m-tricep-l:high','m-tricep-r:high'],front:[]},
+  'e043': {front:['m-front-delt-l:mid','m-front-delt-r:mid'],back:['m-trap:high','m-rear-delt-l:mid','m-rear-delt-r:mid']},
+  'e044': {front:['m-calf-front-l:high','m-calf-front-r:high'],back:[]},
+  'e045': {front:['m-front-delt-l:high','m-front-delt-r:high'],back:[]},
+};
+
+function resetHeatmap(){
+  document.querySelectorAll('.muscle-group').forEach(el=>{
+    el.className='muscle-group';
+  });
+}
+
+function showMuscleHeatmap(exId){
+  resetHeatmap();
+  const map = MUSCLE_MAP[exId];
+  if(!map) return;
+  const applyMuscles = (list) => {
+    if(!list) return;
+    list.forEach(entry=>{
+      const [id,level]=entry.split(':');
+      const el=document.getElementById(id);
+      if(el) el.className=`muscle-group active-${level}`;
+    });
+  };
+  applyMuscles(map.front);
+  applyMuscles(map.back);
+}
+
+// ── ACHIEVEMENTS SYSTEM ──
+const ACHIEVEMENTS = [
+  {id:'first_workout',icon:'🏋️',name:'First Rep',desc:'Complete your first workout',check:()=>ST.sessions.length>=1},
+  {id:'streak_3',icon:'🔥',name:'On Fire',desc:'3 day workout streak',check:()=>getStreak()>=3},
+  {id:'streak_7',icon:'🌟',name:'Week Warrior',desc:'7 day workout streak',check:()=>getStreak()>=7},
+  {id:'sessions_10',icon:'💪',name:'Iron Habit',desc:'Complete 10 workouts',check:()=>ST.sessions.length>=10},
+  {id:'sessions_50',icon:'🦾',name:'Iron Legend',desc:'Complete 50 workouts',check:()=>ST.sessions.length>=50},
+  {id:'first_pr',icon:'🏅',name:'New Record',desc:'Set your first PR',check:()=>ST.prs.length>=1},
+  {id:'prs_5',icon:'🥇',name:'PR Machine',desc:'Set 5 personal records',check:()=>ST.prs.length>=5},
+  {id:'nutrition_day',icon:'🥗',name:'Macro Master',desc:'Log a full day of nutrition',check:()=>{const n=getTodayNutrition();return n.cal>1200;}},
+  {id:'water_goal',icon:'💧',name:'Hydrated',desc:'Hit water goal for the day',check:()=>getTodayWater()>=ST.goals.waterMl},
+  {id:'volume_100k',icon:'⚡',name:'Volume King',desc:'Lift 100,000kg total volume',check:()=>ST.sessions.reduce((a,s)=>a+(s.volume||0),0)>=100000},
+  {id:'early_bird',icon:'🌅',name:'Early Bird',desc:'Log a workout before 8am',check:()=>ST.sessions.some(s=>new Date(s.startedAt).getHours()<8)},
+  {id:'night_owl',icon:'🦉',name:'Night Owl',desc:'Log a workout after 9pm',check:()=>ST.sessions.some(s=>new Date(s.startedAt).getHours()>=21)},
+];
+
+function getUnlockedAchs(){return ACHIEVEMENTS.filter(a=>a.check());}
+
+function renderAchievements(containerId, limit=6){
+  const el=document.getElementById(containerId);
+  if(!el) return;
+  const unlocked=getUnlockedAchs().map(a=>a.id);
+  const list = limit ? ACHIEVEMENTS.slice(0,limit) : ACHIEVEMENTS;
+  el.innerHTML=list.map(a=>{
+    const isUnlocked=unlocked.includes(a.id);
+    return `<div class="ach-card ${isUnlocked?'unlocked':'locked'}">
+      ${isUnlocked?'<div class="ach-badge">✓</div>':''}
+      <div class="ach-icon">${a.icon}</div>
+      <div class="ach-name">${a.name}</div>
+      <div class="ach-desc">${a.desc}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderAllAchievements(){
+  renderAchievements('all-achievements-grid', 0);
+  const unlocked=getUnlockedAchs().length;
+  const el=document.getElementById('ach-summary');
+  if(el) el.textContent=`${unlocked} / ${ACHIEVEMENTS.length} unlocked — Keep grinding! 💪`;
+}
+
+// ── LEVEL SYSTEM ──
+function getLevel(){
+  const sessions=ST.sessions.length;
+  const prs=ST.prs.length;
+  const xp=sessions*10+prs*5;
+  const levels=[
+    {name:'Rookie',icon:'🥉',min:0,max:50},
+    {name:'Contender',icon:'🥈',min:50,max:150},
+    {name:'Elite',icon:'🥇',min:150,max:300},
+    {name:'Champion',icon:'🏆',min:300,max:600},
+    {name:'Legend',icon:'👑',min:600,max:999999},
+  ];
+  const lvl=levels.findLast(l=>xp>=l.min)||levels[0];
+  return {xp,level:lvl,pct:Math.min(((xp-lvl.min)/(lvl.max-lvl.min))*100,100)};
+}
+
+function renderLevelDisplay(){
+  const el=document.getElementById('level-display');
+  if(!el) return;
+  const {xp,level,pct}=getLevel();
+  el.innerHTML=`
+    <div style="display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--gold-border);border-radius:20px;padding:6px 16px;margin-bottom:8px">
+      <span style="font-size:18px">${level.icon}</span>
+      <span style="font-weight:800;font-size:14px;color:var(--gold)">${level.name}</span>
+      <span style="font-size:11px;color:var(--text3)">${xp} XP</span>
+    </div>
+    <div class="level-bar-wrap">
+      <div class="pbar pbar-sm"><div class="pbar-fill" style="background:var(--gold);width:${pct}%"></div></div>
+    </div>`;
+}
+
+// ── PR TOAST ──
+function showPRToast(){
+  const t=document.getElementById('pr-toast');
+  if(!t) return;
+  t.style.display='block';
+  setTimeout(()=>{t.style.display='none';},3000);
+}
+
+// ── PREMIUM REST TIMER ──
+let restTimer=null; let restTotal=90;
+function showRest(sec){
+  restTotal=sec;
+  const arc=document.getElementById('rest-circle-arc');
+  const bigNum=document.getElementById('rest-sec-big');
+  if(arc) arc.style.strokeDashoffset='0';
+  if(bigNum) bigNum.textContent=sec;
+  document.getElementById('rest-overlay').classList.add('open');
+  let rem=sec;
+  const circumference=440;
+  restTimer=setInterval(()=>{
+    rem--;
+    if(bigNum) bigNum.textContent=rem;
+    if(arc) arc.style.strokeDashoffset=(1-(rem/sec))*circumference+'';
+    if(rem<=0) skipRest();
+  },1000);
+}
+function skipRest(){clearInterval(restTimer);document.getElementById('rest-overlay').classList.remove('open');}
+
+// ── HOOK INTO renderAWExercise ──
+const _origRenderAW = renderAWExercise;
+function renderAWExercise(){
+  _origRenderAW();
+  const exId = awState.exercises[awState.curExIdx]?.id;
+  if(exId){
+    showExerciseAnimation(exId);
+    showMuscleHeatmap(exId);
+  }
+}
+
+// ── HOOK INTO checkPR to show toast ──
+const _origCheckPR = checkPR;
+function checkPR(name,id,w,r){
+  const before=ST.prs.length;
+  _origCheckPR(name,id,w,r);
+  if(ST.prs.length>before) showPRToast();
+}
+
+// ── HOOK INTO prTab for achievements ──
+const _origPrTab = prTab;
+function prTab(id){
+  const btns=document.querySelectorAll('#screen-profile .tab-btn');
+  const map={'profile':0,'trainer':1,'attend':2,'achievements':3,'settings':4};
+  document.querySelectorAll('#screen-profile .scroll').forEach(s=>s.style.display='none');
+  const panel=document.getElementById('prtab-'+id);
+  if(panel) panel.style.display='';
+  btns.forEach((b,i)=>b.classList.toggle('active',i===map[id]));
+  if(id==='attend') refreshAttendance();
+  if(id==='settings') loadGoalInputs();
+  if(id==='achievements') renderAllAchievements();
+  if(id==='profile'){renderLevelDisplay();}
+}
+
+// ── PATCH refreshHome to show achievements ──
+const _origRefreshHome = refreshHome;
+function refreshHome(){
+  _origRefreshHome();
+  renderAchievements('home-achievements',6);
+  renderLevelDisplay();
+}
+
+// ── PATCH refreshProfile to show level ──
+const _origRefreshProfile = refreshProfile;
+function refreshProfile(){
+  _origRefreshProfile();
+  renderLevelDisplay();
+}
+
+// Init premium
+document.addEventListener('DOMContentLoaded',()=>{
+  renderAchievements('home-achievements',6);
+  renderLevelDisplay();
+});
+setTimeout(()=>{
+  renderAchievements('home-achievements',6);
+  renderLevelDisplay();
+},200);
+
 </script>
 </body>
 </html>
